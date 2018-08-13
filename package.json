@@ -1,0 +1,25 @@
+{
+  "name": "tb-raspberry",
+  "version": "1.0.0",
+  "description": "Toroback module that helps you control the Raspberry's GPIO",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MigAP/tb-raspberry.git"
+  },
+  "keywords": [
+    "toroback"
+  ],
+  "author": "MigAP",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MigAP/tb-raspberry/issues"
+  },
+  "homepage": "https://github.com/MigAP/tb-raspberry#readme",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
+}
