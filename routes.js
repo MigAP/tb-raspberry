@@ -1,12 +1,15 @@
 let router = new require('express').Router(); 
 
 // Require Controllers
-const gpio_controller = require('controllers/gpioController'); 
-const pwm_controller = require('controllers/pwmController'); 
-const readall_controller = require('controllers/readallController'); 
+const gpio_controller = require('./controllers/gpioController'); 
+const pwm_controller = require('./controllers/pwmController'); 
+const readall_controller = require('./controllers/readallController'); 
 
 
 function setupRoutes(App){
+
+    log = App.log.child({module:'raspberry'});
+    log.debug("Iniciando las rutas del modulo tb-raspberry"); 
 
     router.use(function (req, res, next){
 
@@ -14,6 +17,10 @@ function setupRoutes(App){
         req._ctx['ressource'] = req.query.service;
         next();
 
+    });
+
+    router.get("/test", (req, res, next) => {
+        res.send("Testing routes "); 
     });
 
     /**
@@ -26,7 +33,7 @@ function setupRoutes(App){
      */
     router.get('/gpio', gpio_controller.gpio); 
     router.get('/gpio/write/:port/:state', gpio_controller.gpioWrite);
-    router.get('gpio/read/:port', gpio_controller.gpioRead);
+    router.get('/gpio/read/:port', gpio_controller.gpioRead);
 
     /**
      * PWM routes 
@@ -42,7 +49,7 @@ function setupRoutes(App){
 
 
 
-    App.app.use(`${App.baseRoute}/srv/raspberry`, router);
+    App.app.use(`${App.baseRoute}/srv/raspberry`, router);      // ?
 
 }
 

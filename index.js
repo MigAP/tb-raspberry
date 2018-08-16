@@ -67,17 +67,28 @@ class Rpi {
     static setup(app){
         return new Promise((resolve, reject) => {
             App = app; 
-            log = App.log.ChannelSplitterNode({module:'raspberry'});
+            log = App.log.child({module:'raspberry'});
 
-            log.debug("iniciando Modulo raspberry"); 
+            log.debug("Iniciando Modulo raspberry"); 
 
             require("./routes")(app);
+            resolve(); 
         });
     }
-
+    /*
     static init(){
     }
+    */
 
 }
+
+/*
+// Need-it ? 
+function loadConfigOptions(){
+    return nex Promise((resolve, reject) => {
+
+    });
+}
+*/
 
 module.exports = Rpi; 
