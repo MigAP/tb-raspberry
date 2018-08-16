@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/MigAP/tb-raspberry#readme",
   "dependencies": {
-    "express": "^4.16.3"
+    "express": "^4.16.3",
+    "pigpio": "^1.1.2"
   }
 }
