@@ -34,6 +34,7 @@ function setupRoutes(App){
     router.get('/gpio', gpio_controller.gpio); 
     router.get('/gpio/write/:port/:state', gpio_controller.gpioWrite);
     router.get('/gpio/read/:port', gpio_controller.gpioRead);
+    router.post('/gpio', gpio_controller.gpioPost);
 
     /**
      * PWM routes 
@@ -44,6 +45,9 @@ function setupRoutes(App){
             'Frequency muste be between 0 and 125 000 000');
     });
     
+    router.post("/pwm/soft", pwm_controller.pwmSoftPost);
+    router.post("/pwm/hard", pwm_controller.pwmHardPost); 
+     
     router.get('/pwm/soft/:port/:dutyCycle', pwm_controller.pwmSoftware); 
     router.get('/pwm/hard/:port/:freq/:dutyCycle', pwm_controller.pwmHardware);
 

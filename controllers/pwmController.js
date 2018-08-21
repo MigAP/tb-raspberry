@@ -14,3 +14,10 @@ exports.pwmHardware = (req, res) => {
     res.end('Hardware PWM is set in GPIO '+ req.params.port+ ' frequency : '+req.params.freq+ ' duty cycle ' + req.params.dutyCycle); 
 };
     
+exports.pwmSoftPost = (req,res)=>{
+
+}
+
+exports.pwmHardPost = (req,res) => {
+    
+}
