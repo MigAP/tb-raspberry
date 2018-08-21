@@ -1,4 +1,4 @@
-exports = function( oldpin ){
+exports.transformer = function( oldpin ){
 
     switch(oldpin){
         

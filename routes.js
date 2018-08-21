@@ -9,7 +9,7 @@ const readall_controller = require('./controllers/readallController');
 function setupRoutes(App){
 
     log = App.log.child({module:'raspberry'});
-    log.debug("Iniciando las rutas del modulo tb-raspberry"); 
+    log.debug("Iniciando las rutas del modulo tb-raspberryBLABLA"); 
 
     router.use(function (req, res, next){
 
@@ -52,8 +52,12 @@ function setupRoutes(App){
     router.get('/pwm/hard/:port/:freq/:dutyCycle', pwm_controller.pwmHardware);
 
 
-
-    App.app.use(`${App.baseRoute}/srv/raspberry`, router);      // ?
+    App.app.use((req, res, next) => {
+      res.header("Access-Control-Allow-Origin", "*");
+      res.header("Acces-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+      next(); 
+      });
+     App.app.use(`${App.baseRoute}/srv/raspberry`, router);      // ?
 
 }
 

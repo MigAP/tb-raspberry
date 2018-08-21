@@ -1,5 +1,5 @@
 const Gpio = require('pigpio').Gpio;
-const pinTransformer = require("./pinTransformer");
+const pinTransformer = require("./pinTransformer").transformer;
 
 exports.gpio = function (req, res){
     res.send('Testing Routes Gpio'); 
@@ -18,7 +18,6 @@ exports.gpioRead = function (req, res) {
 
 exports.gpioPost = function( req, res ) {
 	let gpios = req.body; 
-
 	for (let gpioNo = Gpio.MIN_GPIO; gpioNo <= Gpio.MAX_GPIO; gpioNo += 1) {
 		let gpio = new Gpio(gpioNo);
 
@@ -31,4 +30,5 @@ exports.gpioPost = function( req, res ) {
 		let pin = new Gpio( pinTransformer(parseInt(gpios[i])), {mode:Gpio.OUTPUT}); 
 		pin.digitalWrite(1); 
 	}
+        res.send("GPIO Request has been treated");
 }
