@@ -16,7 +16,7 @@ exports.pwmHardware = (req, res) => {
     
 exports.pwmSoftPost = (req,res)=>{
 
-    let pwmCongif = JSON.parse(req.body);
+    let pwmCongif =  req.body; //JSON.parse(req.body);
 
     for(let i = 0; i<pwmCongif.length; i++){
 
