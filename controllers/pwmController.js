@@ -1,5 +1,5 @@
 const Gpio = require('pigpio').Gpio; 
-
+const pinTransformer = require("./pinTransformer").transformer;
 
 exports.pwmSoftware = (req, res) => {
     const pwm = new Gpio(req.params.port, {mode:Gpio.OUTPUT}); 
@@ -16,6 +16,17 @@ exports.pwmHardware = (req, res) => {
     
 exports.pwmSoftPost = (req,res)=>{
 
+    let pwmCongif = JSON.parse(req.body);
+
+    for(let i = 0; i<pwmCongif.length; i++){
+
+        let pinNumber = pinTransformer( parseInt(pwmCongif[i].id));
+        let dutyCycle = parseInt(pwmCongif[i].dutyCycle); 
+        let pwm = new Gpio(pinNumber, {mode:Gpio.OUTPUT}); 
+        pwm.pwmWrite(dutyCycle); 
+
+    }
+    res.send("PWM request has been treated"); 
 }
 
 exports.pwmHardPost = (req,res) => {

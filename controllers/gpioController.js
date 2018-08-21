@@ -18,6 +18,8 @@ exports.gpioRead = function (req, res) {
 
 exports.gpioPost = function( req, res ) {
 	let gpios = req.body; 
+	
+	// Turning off all the gpio outputs 
 	for (let gpioNo = Gpio.MIN_GPIO; gpioNo <= Gpio.MAX_GPIO; gpioNo += 1) {
 		let gpio = new Gpio(gpioNo);
 

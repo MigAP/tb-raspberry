@@ -1,4 +1,5 @@
 const {spawn} = require('child_process'); 
+const pinTransformer = require("./pinTransformer").transformer;
 
 exports.readall = function (req, res) {
 	const gpioReadAll = spawn('gpio', ['readall']); // call in the Rpi's shell : gpio read all 

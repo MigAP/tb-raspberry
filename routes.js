@@ -51,12 +51,13 @@ function setupRoutes(App){
     router.get('/pwm/soft/:port/:dutyCycle', pwm_controller.pwmSoftware); 
     router.get('/pwm/hard/:port/:freq/:dutyCycle', pwm_controller.pwmHardware);
 
-
+    // Allow cross domain post 
     App.app.use((req, res, next) => {
       res.header("Access-Control-Allow-Origin", "*");
       res.header("Acces-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
       next(); 
       });
+
      App.app.use(`${App.baseRoute}/srv/raspberry`, router);      // ?
 
 }
