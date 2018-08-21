@@ -16,7 +16,7 @@ exports.pwmHardware = (req, res) => {
     
 exports.pwmSoftPost = (req,res)=>{
 
-    let pwmCongif =  req.body; //JSON.parse(req.body);
+    let pwmCongif =  req.body; 
 
     for(let i = 0; i<pwmCongif.length; i++){
 
@@ -26,9 +26,19 @@ exports.pwmSoftPost = (req,res)=>{
         pwm.pwmWrite(dutyCycle); 
 
     }
-    res.send("PWM request has been treated"); 
+    res.send("Software PWM request has been treated"); 
 }
 
 exports.pwmHardPost = (req,res) => {
-    
+    let pwmCongif = req.body; 
+
+    for(let i =0; i<pwmCongif.length; i++){
+
+        let pinNumber = pinTransformer( parseInt(pwmCongif[i].id));
+        let dutyCycle = parseInt(pwmCongif[i].dutyCycle)*10000; 
+        let frequency = parseFloat(pwmCongif[i].frequency); 
+        let pwm = new Gpio(pinNumber, {mode:Gpio.OUTPUT}); 
+        pwm.hardwarePwmWrite(frequency,dutyCycle); 
+    }
+    res.send("Hardware PWM request has been treated"); 
 }
