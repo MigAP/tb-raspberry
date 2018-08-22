@@ -26,7 +26,7 @@ function setupRoutes(App){
     /**
      * ReadAll Routes 
      */
-    router.get('/', readall_controller.readall);
+    router.get('/readall', readall_controller.readall);
 
     /**
      * GPIO Read and Write routes 
