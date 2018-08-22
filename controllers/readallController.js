@@ -22,7 +22,12 @@ exports.readAllGpio = function(req, res){
 			gpioMode:gpio.getMode(), 
 			gpioValue:gpio.digitalRead()
 		});
+
+		console.log('GPIO ' + gpioNo + ':' +
+			' mode=' + gpio.getMode() +
+			' level=' + gpio.digitalRead()
+		);
 	  }
           
-        res.json(gpioValues); 
-}
+	res.json(gpioValues); 
+};
