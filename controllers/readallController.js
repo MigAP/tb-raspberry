@@ -18,9 +18,9 @@ exports.readAllGpio = function(req, res){
 		const gpio = new Gpio(gpioNo); // Declaring the gpio this way doesn't affect the GPIO mode, the gpio is not chaged
 
 		gpioValues.push({
-			gpionumber:gpioNo, 
-			gpiomode:gpio.getMode(), 
-			gpiovalue:gpio.digitalRead()
+			gpioNumber:gpioNo, 
+			gpioMode:gpio.getMode(), 
+			gpioValue:gpio.digitalRead()
 		});
 		
 		res.json(JSON.stringify(gpioValues)); 
