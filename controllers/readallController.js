@@ -12,8 +12,7 @@ exports.readall = function (req, res) {
 
 exports.readAllGpio = function(req, res){
 	const gpioValues = []; 
-
-	for (let gpioNo = Gpio.MIN_GPIO; gpioNo <= Gpio.MAX_GPIO; gpioNo += 1) {
+	for (let gpioNo = Gpio.MIN_GPIO; gpioNo <=28 ; gpioNo += 1) {
 
 		const gpio = new Gpio(gpioNo); // Declaring the gpio this way doesn't affect the GPIO mode, the gpio is not chaged
 
